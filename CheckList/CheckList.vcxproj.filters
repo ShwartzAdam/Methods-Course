@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\CheckList\Checklist.cpp">
+    <ClCompile Include="CheckList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\CheckList\Main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\CheckList\Checklist.h">
+    <ClInclude Include="CheckList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
