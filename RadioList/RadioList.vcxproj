@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Radiolist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Radiolist.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CA29E58A-51E4-482B-99BC-F4F583C15971}</ProjectGuid>
     <RootNamespace>RadioList</RootNamespace>
@@ -117,13 +124,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\RadioList\Main.cpp" />
-    <ClCompile Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\RadioList\Radiolist.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Documents\Visual Studio 2015\Git Repos\RadioList\Radiolist.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
