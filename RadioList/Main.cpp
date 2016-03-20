@@ -64,7 +64,7 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Radiolist t)
 			t.position(7, 7);
 		else
 		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+			SetConsoleTextAttribute(t.handle, FOREGROUND_RED);
 			t.position(7, row + 7);
 			cout << t.options[row];
 			if (chosen[row] == 1) {
@@ -72,7 +72,7 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Radiolist t)
 				cout << "o";
 			}
 			--row;
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+			SetConsoleTextAttribute(t.handle, FOREGROUND_GREEN);
 			t.position(7, row + 7);
 			cout << t.options[row];
 			if (chosen[row] == 1) {
@@ -89,7 +89,7 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Radiolist t)
 			t.position(7, 11);
 		else
 		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+			SetConsoleTextAttribute(t.handle, FOREGROUND_RED);
 			t.position(7, row + 7);
 			cout << t.options[row];
 			if (chosen[row] == 1) {
@@ -97,7 +97,7 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Radiolist t)
 				cout << "o";
 			}
 			++row;
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+			SetConsoleTextAttribute(t.handle, FOREGROUND_GREEN);
 			t.position(7, row + 7);
 			cout << t.options[row];
 			if (chosen[row] == 1) {
