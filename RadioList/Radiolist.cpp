@@ -11,9 +11,9 @@ Radiolist::Radiolist()
 		CONSOLE_CURSOR_INFO cci = { 100, FALSE };
 		SetConsoleCursorInfo(handle, &cci);
 		if (i == 0)
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+			SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
 		else
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+			SetConsoleTextAttribute(handle, FOREGROUND_RED);
 		cout << options[i];
 		position(7, 7);
 
