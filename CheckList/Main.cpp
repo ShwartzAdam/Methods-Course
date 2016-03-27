@@ -8,6 +8,9 @@ HANDLE handleMain;
 DWORD fdwSaveOldMode;
 
 VOID KeyEventProc(KEY_EVENT_RECORD, Checklist t);
+VOID MouseEventProc(MOUSE_EVENT_RECORD, Checklist t);
+void mouseMove(int _row, Checklist _t);
+void mouseClick(int _y, Checklist t);
 int row = 0;
 int chosen[5] = { 0, 0, 0, 0, 0 };
 
@@ -15,13 +18,13 @@ int main()
 {
 	DWORD cNumRead, fdwMode, i;
 	INPUT_RECORD irInBuf[128];
-	int counter = 0, countChar = 0;
+	int countChar = 0;
 
 	Checklist list;
 
 	handleMain = GetStdHandle(STD_INPUT_HANDLE);
 
-	while (counter++ <= 1000)
+	while (TRUE)
 	{
 		// Wait for the events. 
 
@@ -41,6 +44,10 @@ int main()
 			{
 			case KEY_EVENT: // keyboard input 
 				KeyEventProc(irInBuf[i].Event.KeyEvent, list);
+				break;
+
+			case MOUSE_EVENT: // mouse input 
+				MouseEventProc(irInBuf[i].Event.MouseEvent, list);
 				break;
 
 			default:
@@ -173,5 +180,66 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Checklist t)
 	else if (ker.bKeyDown)
 	{
 		//Do nothing...
+	}
+}
+
+VOID MouseEventProc(MOUSE_EVENT_RECORD mer, Checklist t)
+{
+	switch (mer.dwEventFlags)
+	{
+	case 0:
+
+		if (mer.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED && mer.dwMousePosition.Y > 6 && mer.dwMousePosition.Y < 12 && mer.dwMousePosition.X > 6 && mer.dwMousePosition.X < 19)
+		{
+			mouseClick(mer.dwMousePosition.Y, t);
+		}
+		break;
+	case MOUSE_MOVED:
+		if (mer.dwMousePosition.Y > 6 && mer.dwMousePosition.Y < 12 && mer.dwMousePosition.X > 6 && mer.dwMousePosition.X < 19)
+		{
+			mouseMove(mer.dwMousePosition.Y, t);
+		}
+
+		break;
+	default:
+		//Nothing...
+		break;
+	}
+}
+
+void mouseMove(int _row, Checklist _t)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		_t.position(7, 7 + i);
+		if (i == _row - 7)
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+		}
+		else
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+		}
+		row = _row - 7;
+		cout << _t.options[i];
+		if (chosen[i] == 1) {
+			_t.position(8, 7 + i);
+			cout << "#";
+		}
+	}
+	_t.position(7, _row);
+}
+
+void mouseClick(int _y, Checklist t)
+{
+	if (chosen[_y - 7] == 0) {
+		t.position(8, _y);
+		cout << "#";
+		chosen[_y - 7]++;
+	}
+	else {
+		t.position(8, _y);
+		cout << " ";
+		chosen[_y - 7]--;
 	}
 }
