@@ -27,13 +27,7 @@ int main()
 
 	while (counter++ <= 1000)
 	{
-		// Wait for the events. 
-
-		if (!ReadConsoleInput(
-			handleMain,      // input buffer handle 
-			irInBuf,     // buffer to read into 
-			128,         // size of read buffer 
-			&cNumRead)) // number of records read 
+		if (!ReadConsoleInput(handleMain,irInBuf,128,&cNumRead))
 
 			fdwMode = ENABLE_WINDOW_INPUT;
 
@@ -56,7 +50,6 @@ int main()
 			}
 		}
 	}
-
 	getchar();
 	return 0;
 }
