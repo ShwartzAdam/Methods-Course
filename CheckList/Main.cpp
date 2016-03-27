@@ -9,7 +9,6 @@ DWORD fdwSaveOldMode;
 
 VOID KeyEventProc(KEY_EVENT_RECORD, Checklist t);
 VOID MouseEventProc(MOUSE_EVENT_RECORD, Checklist t);
-void enterPressed(Checklist t);
 void mouseMove(int _row, Checklist _t);
 void mouseClick(int _y, Checklist t);
 int row = 0;
@@ -115,7 +114,16 @@ VOID KeyEventProc(KEY_EVENT_RECORD ker, Checklist t)
 	}
 	else if (GetAsyncKeyState(VK_RETURN) != 0)
 	{
-		enterPressed(t);
+		if (chosen[row] == 0) {
+			t.position(8, row + 7);
+			cout << "#";
+			chosen[row]++;
+		}
+		else {
+			t.position(8, row + 7);
+			cout << " ";
+			chosen[row]--;
+		}
 	}
 	else if (ker.bKeyDown)
 	{
@@ -144,20 +152,6 @@ VOID MouseEventProc(MOUSE_EVENT_RECORD mer, Checklist t)
 	default:
 		//Nothing...
 		break;
-	}
-}
-
-void enterPressed(Checklist t)
-{
-	if (chosen[row] == 0) {
-		t.position(8, row + 7);
-		cout << "#";
-		chosen[row]++;
-	}
-	else {
-		t.position(8, row + 7);
-		cout << " ";
-		chosen[row]--;
 	}
 }
 
