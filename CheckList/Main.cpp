@@ -23,6 +23,7 @@ int main()
 	Checklist list;
 
 	handleMain = GetStdHandle(STD_INPUT_HANDLE);
+	SetConsoleMode(handleMain, ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS);
 
 	while (TRUE)
 	{
