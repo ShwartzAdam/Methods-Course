@@ -14,8 +14,9 @@ int main()
 	Label myLabel("Hello World! This Is A Label!");
 
 	HANDLE handleMain = GetStdHandle(STD_INPUT_HANDLE);
+	SetConsoleMode(handleMain, ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS);
 
-	while (counter++ <= 1000)
+	while (TRUE)
 	{
 		if (!ReadConsoleInput(handleMain,irInBuf,128,&cNumRead)) 
 
