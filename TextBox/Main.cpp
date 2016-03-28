@@ -16,13 +16,13 @@ int main()
 {
 	DWORD cNumRead, fdwMode, i;
 	INPUT_RECORD irInBuf[128];
-	int counter = 0, countChar = 0;
+	int countChar = 0;
 
 	Textbox box;
 
 	hStdin = GetStdHandle(STD_INPUT_HANDLE);
 
-	while (counter++ <= 1000)
+	while (TRUE)
 	{
 		if (!ReadConsoleInput(hStdin, irInBuf, 128, &cNumRead))
 
