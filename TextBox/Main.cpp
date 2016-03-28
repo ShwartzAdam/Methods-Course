@@ -22,6 +22,8 @@ int main()
 
 	hStdin = GetStdHandle(STD_INPUT_HANDLE);
 
+	SetConsoleMode(hStdin, ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS);
+
 	while (TRUE)
 	{
 		if (!ReadConsoleInput(hStdin, irInBuf, 128, &cNumRead))
